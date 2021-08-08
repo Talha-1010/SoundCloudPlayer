@@ -12,52 +12,105 @@ SC.initialize({
 SC.get('/tracks', {
   q: 'buskers'
 }).then(function(tracks) {
-  console.log(tracks);
+    console.log(tracks);
+    tracks.forEach(track => {
+        
+        var card = document.createElement('div');
+        card.classList.add("card");
+
+        var imageDiv = document.createElement('div');
+        var img = document.createElement('img');
+        img.classList.add("image_img");
+        img.src=track.artwork_url || "https://picsum.photos/290/290";
+        imageDiv.appendChild(img);
+        card.appendChild(img);
+
+        var contentDiv = document.createElement('div');
+        contentDiv.className="content";
+
+        var header = document.createElement('div');
+        header.className="header";
+
+        var hyperLink = document.createElement('a');
+        hyperLink.href=track.permalink_url;
+        hyperLink.target="_blank";
+        hyperLink.innerText= track.title;
+
+        header.appendChild(hyperLink);
+        contentDiv.appendChild(header);
+        card.appendChild(contentDiv);
+
+
+        var button = document.createElement('div');
+        button.className = "ui bottom attached button js-button";
+
+        var icon = document.createElement("i");
+        icon.className="add icon";
+
+        var span = document.createElement('span');
+        span.innerText = "Add to playlist";
+
+        button.appendChild(icon);
+        button.appendChild(span);
+
+        card.appendChild(button);
+
+        var searchResults = document.getElementById("searchResults");
+        searchResults.appendChild(card);
+
+    });
+
+
+
 });
 
 
-var card = document.createElement('div');
-card.classList.add("card");
-
-var imageDiv = document.createElement('div');
-var img = document.createElement('img');
-img.classList.add("image_img");
-img.src="http://www.placekitten.com/290/290";
-imageDiv.appendChild(img);
-card.appendChild(img);
-
-var contentDiv = document.createElement('div');
-contentDiv.className="content";
-
-var header = document.createElement('div');
-header.className="header";
-
-var hyperLink = document.createElement('a');
-hyperLink.href="https://soundcloud.com/barsuk-records/rilo-kiley-science-vs-romance";
-hyperLink.target="_blank";
-hyperLink.innerText="Science Vs. Romance";
-
-header.appendChild(hyperLink);
-contentDiv.appendChild(header);
-card.appendChild(contentDiv);
 
 
-var button = document.createElement('div');
-button.className = "ui bottom attached button js-button";
 
-var icon = document.createElement("i");
-icon.className="add icon";
 
-var span = document.createElement('span');
-span.innerText = "Add to playlist";
+// var card = document.createElement('div');
+// card.classList.add("card");
 
-button.appendChild(icon);
-button.appendChild(span);
+// var imageDiv = document.createElement('div');
+// var img = document.createElement('img');
+// img.classList.add("image_img");
+// img.src="https://i1.sndcdn.com/artworks-XMgOJNu369h3-0-large.jpg";
+// imageDiv.appendChild(img);
+// card.appendChild(img);
 
-card.appendChild(button);
+// var contentDiv = document.createElement('div');
+// contentDiv.className="content";
 
-var searchResults = document.getElementById("searchResults");
-searchResults.appendChild(card);
+// var header = document.createElement('div');
+// header.className="header";
+
+// var hyperLink = document.createElement('a');
+// hyperLink.href="https://soundcloud.com/barsuk-records/rilo-kiley-science-vs-romance";
+// hyperLink.target="_blank";
+// hyperLink.innerText="Science Vs. Romance";
+
+// header.appendChild(hyperLink);
+// contentDiv.appendChild(header);
+// card.appendChild(contentDiv);
+
+
+// var button = document.createElement('div');
+// button.className = "ui bottom attached button js-button";
+
+// var icon = document.createElement("i");
+// icon.className="add icon";
+
+// var span = document.createElement('span');
+// span.innerText = "Add to playlist";
+
+// button.appendChild(icon);
+// button.appendChild(span);
+
+// card.appendChild(button);
+
+// var searchResults = document.getElementById("searchResults");
+// searchResults.appendChild(card);
 
 
 
