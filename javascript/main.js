@@ -38,6 +38,19 @@ UI.EnterPress= function(){
 
 UI.EnterPress();
 
+//created a Reset button Function
+UI.ResetPress=function(){
+
+    var resetButton =document.querySelector('.resetButton');
+    resetButton.addEventListener('click',function(){
+        localStorage.clear();
+        location.reload();
+    });
+
+}
+
+UI.ResetPress();
+
 
 
 //created SoundCloudApi obejct
