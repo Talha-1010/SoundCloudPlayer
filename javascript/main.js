@@ -4,10 +4,27 @@
 
 var searchButton =document.querySelector('i');
 searchButton.addEventListener('click',function(){
-    var input = document.querySelector('input').value;
-    getTracks(input);
+    
 
 });
+
+
+
+document.querySelector(".ui").addEventListener('keyup',function(e){
+
+    var input = document.querySelector(".js-search").value;
+  
+    // if the key ENTER is pressed...
+    if(e.which === 13) {
+        var input = document.querySelector('input').value;
+        getTracks(input);
+
+      
+    }
+  
+});
+
+
 
 
 
