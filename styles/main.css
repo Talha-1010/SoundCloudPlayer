@@ -64,3 +64,22 @@ html, body {
 	justify-content: center;
     margin-top: 30px;
 }
+
+.buttonContainer{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.searchButton{
+	width:  10vw;
+	height: 5vh;
+	margin: 1vh;
+	border-radius: 5px;
+	color: white;
+	background-color: rgb(233, 89, 37);
+	transition: all .3s ease-in-out;
+  }
+  
+  .searchButton:hover{
+	transform: scale(0.95);
+  }
