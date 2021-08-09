@@ -65,12 +65,12 @@ html, body {
     margin-top: 30px;
 }
 
-.buttonContainer{
+#soundcloud-player .buttonContainer{
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
 }
-.searchButton{
+#soundcloud-player .resetButton{
 	width:  10vw;
 	height: 5vh;
 	margin: 1vh;
@@ -80,6 +80,6 @@ html, body {
 	transition: all .3s ease-in-out;
   }
   
-  .searchButton:hover{
+#soundcloud-player .resetButton:hover{
 	transform: scale(0.95);
-  }
+}
