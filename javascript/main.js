@@ -8,7 +8,7 @@ UI.SubmitClick= function(){
     var searchButton =document.querySelector('i');
     searchButton.addEventListener('click',function(){
     var input = document.querySelector('input').value;
-    getTracks(input);
+    SoundCloudAPI.getTracks(input);
 
 
     });
