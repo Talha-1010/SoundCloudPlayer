@@ -4,7 +4,9 @@
 
 var searchButton =document.querySelector('i');
 searchButton.addEventListener('click',function(){
-    
+    var input = document.querySelector('input').value;
+    getTracks(input);
+
 
 });
 
@@ -107,15 +109,18 @@ function embedAudioWidget(link)
     var playlist = document.querySelector(".js-playlist");
     var item = document.createElement('div');
     item.innerHTML=embed.html;
-    // playlist.appendChild(item);
     playlist.prepend(item);
+
+    //added local storage
+    localStorage.setItem("key",playlist.innerHTML);
 
     });
 
 }
 
-
-
+//assigning local storage
+var playlist = document.querySelector(".js-playlist");
+playlist.innerHTML =localStorage.getItem("key");
 
 
 })();
