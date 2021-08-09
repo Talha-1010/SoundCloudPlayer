@@ -23,7 +23,7 @@ function getTracks(name){
     SC.get('/tracks', {
         q: name
       }).then(function(tracks) {
-          //console.log(tracks);
+ 
           $("#searchResults").empty();
 
           tracks.forEach(track => {
@@ -69,9 +69,7 @@ function getTracks(name){
               button.appendChild(span);
 
               button.addEventListener('click',function(){
-                // console.log(button);
-
-
+                
 
               });
       
