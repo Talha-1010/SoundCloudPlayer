@@ -1,41 +1,61 @@
 (function(){
 
+//created User Input Object
+var UI ={};
 
+UI.SubmitClick= function(){
 
-var searchButton =document.querySelector('i');
-searchButton.addEventListener('click',function(){
+    var searchButton =document.querySelector('i');
+    searchButton.addEventListener('click',function(){
     var input = document.querySelector('input').value;
     getTracks(input);
 
 
-});
+    });
 
 
+}
 
-document.querySelector(".ui").addEventListener('keyup',function(e){
+UI.SubmitClick();
 
-    var input = document.querySelector(".js-search").value;
-  
-    // if the key ENTER is pressed...
-    if(e.which === 13) {
-        var input = document.querySelector('input').value;
-        getTracks(input);
+UI.EnterPress= function(){
 
+    document.querySelector(".ui").addEventListener('keyup',function(e){
+
+        var input = document.querySelector(".js-search").value;
       
-    }
-  
-});
+        // if the key ENTER is pressed...
+        if(e.which === 13) {
+            var input = document.querySelector('input').value;
+            SoundCloudAPI.getTracks(input);
+    
+          
+        }
+      
+    });
+
+}
+
+UI.EnterPress();
 
 
 
+//created SoundCloudApi obejct
+var SoundCloudAPI = {};
 
 
-SC.initialize({
-  client_id: 'cd9be64eeb32d1741c17cb39e41d254d'
-});
+SoundCloudAPI.init = function(){
+
+    SC.initialize({
+        client_id: 'cd9be64eeb32d1741c17cb39e41d254d'
+      });
+      
+}
+
+SoundCloudAPI.init();
 
 
-function getTracks(name){
+SoundCloudAPI.getTracks = function (name){
     SC.get('/tracks', {
         q: name
       }).then(function(tracks) {
@@ -85,7 +105,8 @@ function getTracks(name){
               button.appendChild(span);
 
               button.addEventListener('click',function(){
-                embedAudioWidget(track.permalink_url);
+                // embedAudioWidget(track.permalink_url);
+                SoundCloudAPI.embedAudioWidget(track.permalink_url);
 
               });
       
@@ -100,7 +121,8 @@ function getTracks(name){
 }
 
 
-function embedAudioWidget(link)
+
+SoundCloudAPI.embedAudioWidget = function (link)
 {
     SC.oEmbed(link, {
     auto_play: true
@@ -117,6 +139,8 @@ function embedAudioWidget(link)
     });
 
 }
+
+
 
 //assigning local storage
 var playlist = document.querySelector(".js-playlist");
