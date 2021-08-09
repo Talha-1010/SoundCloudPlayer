@@ -7,9 +7,6 @@ searchButton.addEventListener('click',function(){
     var input = document.querySelector('input').value;
     getTracks(input);
 
-    
-    
-
 });
 
 
@@ -69,7 +66,7 @@ function getTracks(name){
               button.appendChild(span);
 
               button.addEventListener('click',function(){
-                
+                embedAudioWidget(track.permalink_url);
 
               });
       
@@ -84,17 +81,23 @@ function getTracks(name){
 }
 
 
+function embedAudioWidget(link)
+{
+    SC.oEmbed(link, {
+    auto_play: true
+    }).then(function(embed){
+    console.log('oEmbed response: ', embed);
+    var playlist = document.querySelector(".js-playlist");
+    var item = document.createElement('div');
+    item.innerHTML=embed.html;
+    // playlist.appendChild(item);
+    playlist.prepend(item);
 
-SC.oEmbed('https://soundcloud.com/forss/flickermood', {
-  auto_play: true
-}).then(function(embed){
-  console.log('oEmbed response: ', embed);
-  var playlist = document.querySelector(".js-playlist");
-  var item = document.createElement('div');
-  item.innerHTML=embed.html;
-  playlist.appendChild(item);
+    });
 
-});
+}
+
+
 
 
 
