@@ -7,6 +7,9 @@ searchButton.addEventListener('click',function(){
     var input = document.querySelector('input').value;
     getTracks(input);
 
+    
+    
+
 });
 
 
@@ -20,7 +23,7 @@ function getTracks(name){
     SC.get('/tracks', {
         q: name
       }).then(function(tracks) {
-          console.log(tracks);
+          //console.log(tracks);
           $("#searchResults").empty();
 
           tracks.forEach(track => {
@@ -53,6 +56,8 @@ function getTracks(name){
       
               var button = document.createElement('div');
               button.className = "ui bottom attached button js-button";
+              button.id="button";
+              
       
               var icon = document.createElement("i");
               icon.className="add icon";
@@ -62,6 +67,13 @@ function getTracks(name){
       
               button.appendChild(icon);
               button.appendChild(span);
+
+              button.addEventListener('click',function(){
+                // console.log(button);
+
+
+
+              });
       
               card.appendChild(button);
       
@@ -74,4 +86,21 @@ function getTracks(name){
 }
 
 
+
+SC.oEmbed('https://soundcloud.com/forss/flickermood', {
+  auto_play: true
+}).then(function(embed){
+  console.log('oEmbed response: ', embed);
+  var playlist = document.querySelector(".js-playlist");
+  var item = document.createElement('div');
+  item.innerHTML=embed.html;
+  playlist.appendChild(item);
+
+});
+
+
+
 })();
+
+
+
