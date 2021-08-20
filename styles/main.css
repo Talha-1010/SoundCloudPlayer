@@ -1,118 +1,281 @@
-/* CURRENTLY IN: styles/main.css */
-html,
-body {
-  height: 100%;
-  width: 100%;
-  min-height: 100%;
+/* Default reset for entire page */
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body.hide__scrollBar {
+  overflow-y: hidden;
 }
 
-#soundcloud-player .col {
+/* Left icon Styling */
+.hamburger {
+  height: 5px;
+  margin: 40px;
+  width: 35px;
+  background: red;
+  border-radius: 30px;
   position: fixed;
-  height: 100%;
-  width: 100%;
   top: 0;
   left: 0;
+  margin-top: 42px;
+  z-index: 10;
 }
-
-#soundcloud-player .col-left {
-  width: 20%;
-  height: 100%;
-  background-color: #292929;
-  overflow: auto;
+/* Making of .hamburger */
+.hamburger::before,
+.hamburger::after {
+  height: 5px;
+  transition: 0.5s transform linear;
+  content: '';
+  margin: 40px;
+  margin-top: 43px;
+  width: 35px;
+  background: red;
+  border-radius: 30px;
   position: fixed;
-  left: 0;
   top: 0;
-  min-width: 150px;
+  left: 0;
   z-index: 1;
 }
 
-#soundcloud-player .col-right {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  position: fixed;
-  left: 0;
-  top: 0;
-  box-sizing: border-box;
-  padding-left: 20%;
+.hamburger::before {
+  transform: translatey(10px);
 }
-
-#soundcloud-player .main {
-  box-sizing: border-box;
-  padding: 30px;
-  margin: 30px;
+.hamburger::after {
+  transform: translatey(-10px);
 }
-
-#soundcloud-player .input {
+.container {
+  position: relative;
   width: 100%;
 }
 
-#soundcloud-player .input-search {
-  width: 100%;
-  display: block;
-}
-
-#soundcloud-player .search.icon {
-  pointer-events: initial;
-  cursor: pointer;
-}
-
-#soundcloud-player .search-results {
-  justify-content: center;
-  margin-top: 30px;
-}
-
-#soundcloud-player .buttonContainer {
+/* Search and reset button styling */
+.btn {
+  height: 90px;
+  margin-left: 20vw;
+  position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-evenly;
+  align-items: center;
 }
-#soundcloud-player .resetButton {
-  width: 10vw;
-  height: 5vh;
-  margin: 1vh;
-  border-radius: 5px;
+.input {
+  flex: 0.65;
+}
+.resetButton {
+  padding: 8px 15px;
+  border: none;
+  background-color: rgb(220, 20, 60);
+  border-radius: 25px;
   color: white;
-  background-color: rgb(233, 89, 37);
-  transition: all 0.3s ease-in-out;
+  font-weight: bolder;
+}
+.resetButton:hover {
+  background-color: rgb(151, 13, 13);
+}
+.input {
+  position: relative;
+}
+.input input {
+  width: 100%;
+}
+.input-search {
+  padding: 8px 15px;
+  border: none;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 50px;
+}
+.image {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  opacity: 0.7;
 }
 
-#soundcloud-player .resetButton:hover {
-  transform: scale(0.95);
+.col-left {
+  z-index: 2;
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 0;
+  visibility: hidden;
+  transition: all 0.7s linear;
+  animation-name: showsidebar;
+  animation-duration: 0.7s;
+  animation-iteration-count: 1;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
-@media only screen and (max-width: 600px) {
-  .js-playlist {
-    overflow: hidden;
-    width: 60%;
-    height: 10vh;
-  }
-  .ui.card,
-  .ui.cards > .card {
-    display: flex !important;
-    width: 40vw !important;
-    flex-wrap: wrap !important;
-    overflow: hidden !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-  element.style {
-    width: 0% !important;
-  }
-  iframe {
-    max-width: 150px !important;
-    height: 35vh;
-  }
+.col-left::-webkit-scrollbar {
+  width: 10px;
+}
+.col-left::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+.col-left::-webkit-scrollbar-thumb {
+  background: rgba(160, 153, 153, 0.7);
+}
 
-  .input {
-    margin-left: 10%;
-    width: 80% !important;
-    margin-bottom: -10px;
+/* Deciding the onclick Event on the manu */
+.visiblity {
+  visibility: visible;
+  width: 100vw;
+}
+.transform {
+  background: black;
+}
+.transform::before {
+  transform: rotate(315deg);
+}
+.transform::after {
+  transform: rotate(45deg);
+}
+
+/* this section contain display card section Styling */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2), -1px -1px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  margin-bottom: 30px;
+  height: auto;
+  justify-content: space-between;
+  width: 400px;
+}
+.card img {
+  width: 100%;
+  height: 300px;
+}
+
+.card .header {
+  margin: 20px auto 0px;
+  text-align: center;
+  width: 320px;
+}
+.card a {
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+}
+.card .bottom {
+  margin: 20px 0px 20px 0px;
+}
+.card span {
+  padding: 8px 15px;
+  border: none;
+  background-color: rgb(220, 20, 60);
+  border-radius: 25px;
+  color: white;
+  font-weight: bolder;
+}
+
+/* Playlist section styling */
+.js-playlist {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 100px;
+  justify-content: center;
+}
+iframe {
+  padding-right: 20px;
+  padding-bottom: 20px;
+  transition: 0.7s all ease-in-out;
+  height: 40vh;
+}
+
+@media only screen and (max-width: 320px) {
+  .hamburger,
+  .hamburger::before,
+  .hamburger::after {
+    margin: 40px 10px 10px 10px;
   }
   .input-search {
-    font-size: 12px;
-    padding: 20px 0px 20px 10px !important;
+    width: 150px;
   }
-  .resetButton {
+  .input-search::placeholder {
+    font-size: 0.72rem;
+  }
+  /* Card Section Styling for extra-small screen */
+  .card {
+    width: 200px;
+    height: fit-content;
+  }
+  .card .header {
+    width: 170px;
+  }
+  .card img {
+    height: 150px;
+  }
+  .card a {
+    font-size: 1rem;
+  }
+  /* Side bar item section */
+  .js-playlist {
+    flex-direction: column;
+  }
+}
+
+/*styling for the Small screen phone */
+@media only screen and (max-width: 600px) {
+  /* Cards section styling for the Small screen phone */
+  .card {
+    width: 250px;
+    height: auto;
+  }
+  .card img {
+    height: 150px;
+  }
+  .card .header {
+    width: 170px;
+  }
+  .card a {
+    font-size: 16px;
+  }
+}
+
+/* Cards section styling for the tablet and ipad */
+@media only screen and (max-width: 1024px) {
+  /* Cards section styling for the tablet */
+  .card {
+    width: 300px;
+    height: auto;
+  }
+  .card img {
+    height: 180px;
+  }
+  .card .header {
+    width: 240px;
+  }
+  .card a {
+    font-size: 18px;
+  }
+}
+
+/* keyframe for slider animating In */
+@keyframes showsidebar {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 25%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
   }
 }

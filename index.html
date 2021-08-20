@@ -2,30 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SoundCloud Player</title>
-    <link rel="stylesheet" href="styles/semantic.min.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body id="soundcloud-player">
+    <div class="hamburger" id="hamburger"></div>
     <div class="ui container col">
       <div class="col-left js-playlist">
         <!-- Emebed Audio Widet will be placed here -->
       </div>
       <div class="col-right">
         <div class="main">
-          <div class="buttonContainer">
-            <button class="resetButton">Reset</button>
-          </div>
-          <div class="ui massive icon input">
-            <input
-              type="text"
-              placeholder="Search for a song or artist..."
-              class="js-search input-search"
-            />
-            <i class="search icon js-submit"></i>
+          <div class="btn">
+            <div class="ui massive icon input btn-item">
+              <input
+                type="text"
+                placeholder="Search for a song"
+                class="js-search input-search"
+              />
+              <img
+                class="image"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png"
+                alt="Search"
+              />
+              <i class="search icon js-submit"></i>
+            </div>
+            <div class="buttonContainer btn-item">
+              <button class="resetButton">Reset</button>
+            </div>
           </div>
 
           <div
@@ -37,8 +44,8 @@
         </div>
       </div>
     </div>
-
     <script src="javascript/semantic.min.js"></script>
     <script src="javascript/main.js"></script>
+    <script src="javascript/index.js"></script>
   </body>
 </html>
