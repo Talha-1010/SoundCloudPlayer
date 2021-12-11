@@ -103,7 +103,7 @@ SoundCloudAPI.getTracks = function (name){
               card.appendChild(contentDiv);
       
       
-              var button = document.createElement('div');
+              var button = document.createElement('button');
               button.className = "ui bottom attached button js-button";
               button.id="button";
               
